@@ -9,12 +9,6 @@ __attribute__((section(".text"))) void kernel_main(uint32_t magic, uint32_t addr
 
 
 void kernel_main(uint32_t magic, [[maybe_unused]] uint32_t addr) {
-    if (magic != MULTIBOOT2_MAGIC) {
-        for (;;) {
-            __asm__ __volatile__("hlt");
-        }
-    }
-
     for (;;) {
         __asm__ __volatile__("hlt");
     }
