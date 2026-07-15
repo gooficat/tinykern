@@ -1,0 +1,4 @@
+iso/boot/kernel
+*.iso
+*.make
+Makefile
