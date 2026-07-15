@@ -1,13 +1,14 @@
 #include "stub.h"
 #include <stdint.h>
 
-__attribute__((section(".multiboot"))) uint32_t mb_header[] = {
-    MULTIBOOT2_MAGIC,
-    MULTIBOOT2_ARCH_I386,
-    MULTIBOOT2_HEADER_LENGTH,
-    MULTIBOOT2_CHECKSUM,
-    // end tag
-    0,
-    0,
-    0,
+__attribute__((section(".multiboot2"))) struct multiboot2_header multiboot_header = {
+    .magic = MULTIBOOT2_MAGIC,
+    .architecture = MULTIBOOT2_ARCH_I386,
+    .header_length = MULTIBOOT2_HEADER_LENGTH,
+    .checksum = MULTIBOOT2_CHECKSUM,
+    .end_tag = {
+        .type = 0,
+        .flags = 0,
+        .size = 8
+    }
 };

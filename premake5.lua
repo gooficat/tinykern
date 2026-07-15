@@ -8,10 +8,10 @@ project "tinykern"
     kind "ConsoleApp"
     language "C"
     targetdir "iso/boot"
-
+    targetextension ""
     targetname "kernel"
 
-    files { "src/**.h", "src/**.c" }
+    files { "src/**.h", "src/**.c", "src/**.S", "linker.ld" }
     
     includedirs { "src" }
 
@@ -21,6 +21,7 @@ project "tinykern"
         -- "-fno-rtti",
         "-fno-stack-protector",
         "-fno-builtin",
+        "-fno-pie",
         "-Wall",
         "-Wextra",
         "-m32",
@@ -30,6 +31,7 @@ project "tinykern"
 
     linkoptions { 
         "-m32",
+        "-no-pie",
         "-nostdlib",
         "-nodefaultlibs",
         "-nostartfiles",
